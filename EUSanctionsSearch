@@ -1,0 +1,16 @@
+import pandas as pd
+
+"'This is the field that is searched in the EU sanctions list'"
+search_field = ['NameAlias_WholeName']
+
+#This is the link to the EU sanctions data, how the info is parsed and what is searched.
+df = pd.read_csv('https://webgate.ec.europa.eu/fsd/fsf/public/files/csvFullSanctionsList_1_1/content?token=n006g1yf', skipinitialspace=True, sep=";", usecols=search_field)
+
+#This is the search, and the keywords searched, being the suppliers of Wind and Solars
+search = (df[df['NameAlias_WholeName'].str.contains('BayWa|MunichRE|MEAG|Nordex|Vestas|Deutsche|Windtechnik|BT|B2B|Equias|WPO|NW Assekuranz|Energy and System|Energy & System|Eversheds|Normanby|EDF|AAT Wind|KPMG|PWC|Ernst|Young|HDI Insurance|Nordwest|Bank of Scotland|Lloyds|Shakespeare|Martineau|Wave|Lincolnshire|N Power|Npower|Safecell|G Crossley|United Utilities|Engserv|Rossendale|Peel|Scottish Power|John Ed Lees|ABB Limited|Wallace|Big Blu|Eon|E-on|DLA Piper|DLA|Rochdale|Amey|Windtex|JLT|Ecozi|Rotec|Ofcom|Hawkesworth|East Solutions|Richard Glynne Jones|Davies|Hughes|Pierce|CMS|Denbighshire|Cyffyliog|Llanrhaedr|Nantglyn|Scada|CSRM|Welsh Water|Siemens|Gamesa|Dewi Jones|LEBA|Statkraft|MEAGSOLAR|MEAGSOLAR|MEAGSOLAR|Munich|Anvil|Smartest|Spence and Hill|Spence & Hill|Spence|Bentley|Walker|Dixon|Wilson|LSE|Gantlett|Idom|Merebrook|Good Energy|Lanhydrock|Navitas|Total|Carmarthenshire|SSE Electricity|West Suffolk|Bright|Solicitors|Cornwall|EFET|Forest|Heath|HDI|Hennlan|Siemens|Stark|Swindon|Suffolk|Western Power|Epex|Wood Group|Wood|David Cooper|Cooper', na=False)])
+
+#This is the output of the program, with additional text to describe what is being searched, this needs to be maintained in line with line 10.
+output = ("The EU Sanctions list has been searched for the following terms:" + '\n' + '\n' + "MEAGWIND | BayWa | MunichRE | MEAG | Nordex | Vestas | Deutsche Windtechnik | BT | B2B | Equias | WPO | NW Assekuranz | Energy and System Technical | Eversheds | Normanby | EDF | AAT Wind | KPMG | PWC | Ernst & Young | HDI Insurance | Nordwest | Bank of Scotland | Lloyds | Shakespeare | Martineau | Wave | Lincolnshire | N Power | Safecell | G Crossley | United Utilities | Engserv | Rossendale | Peel | Scottish Power | John Ed Lees | ABB Limited | Wallace | Big Blu | Eon | E-on | DLA Piper | Rochdale | Amey | Windtex | JLT | Ecozi | Rotec | Ofcom | Hawkesworth | East Solutions | Richard Glynne Jones | Davies | Hughes | Pierce | CMS | Denbighshire | Cyffyliog | Llanrhaedr | Nantglyn | NW Assekuranz | Scada | CSRM | Welsh Water | Siemens | Gamesa | Dewi Jones | LEBA | Statkraft | Wood Group | David Cooper " + '\n' + '\n' + "MEAGSOLAR | MunichRE | BayWa | Anvil | Smartest | Spence and Hill | Bentley Walker | Dixon Wilson | Ernst & Young | LSE | Gantlett | Idom Merebrook | Good Energy | Lanhydrock | Navitas | Total | Carmarthenshire| SSE Electricity | West Suffolk | Bright Solicitors | Cornwall Council | EFET | Forest Heath District | HDI | Hennlan | Siemens | Stark | Swindon Borough Council | West Suffolk Council | Western Power | Epex" + '\n' + '\n' + ":::::: EU SANCTIONS LIST SEARCH RESULTS ::::::" + '\n' + '\n' + str(search) + '\n' + '\n' + "::::::          END OF RESULTS          ::::::")
+
+print(output)
+
